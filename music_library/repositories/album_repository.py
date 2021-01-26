@@ -7,15 +7,29 @@ import repositories.artist_repository as artist_repository
 
 
 def save(album):
-    pass
+    sql = f"INSERT INTO albums(title, artist, genre, id) VALUE (%s, %s, %s, %s) RETURNING *"
+    values = [album.title, album.artist, album.genre, album.id]
+    results = (sql,values)
+    id = results[0]
+    album.id = id
+    return album
+
 
 
 def delete_all():
-    pass
+    sql = "DELETE FROM albums"
+    run_sql(sql)
 
 
 def select(id):
-    pass
+    album = None
+    sql = "SELECT * FROM albums WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+
+    if result is not None:
+        album = Album(result['title'], result['artist'], result['genre'], result ['id'])
+    return album
 
 
 def select_all():
