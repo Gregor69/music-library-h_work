@@ -33,14 +33,24 @@ def select(id):
 
 
 def select_all():
-    pass
+    albums = []
+    sql = "SELECT * FROM albums"
+    results = run_sql(sql)
+    for row in results:
+        album = Album(row["title"], row["artist"], row['genre'], row['id'])
+        albums.append(album)
+    return album
 
 
 # Extensions
 
-def delete(id):
-    pass
+# def delete(id):
+#     sql = "DELETE FROM albums WHERE id = %s"
+#     values = [id]
+#     run_sql(sql, values)
 
 
-def update(album):
-    pass
+# def update(album):
+#     sql = "UPDATE alsbums SET (description, artist_id, duration, completed) = (%s, %s, %s, %s) WHERE id = %s"
+#     values = [task.description, album.artist.id, album.genre, album.id]
+#     run_sql(sql, values)

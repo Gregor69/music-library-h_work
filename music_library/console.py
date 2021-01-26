@@ -12,11 +12,17 @@ import repositories.album_repository as album_repository
 artist1 = Artist("The Clash")
 artist_repository.save(artist1)
 
-album1 = Album("London Calling", "artist", "punk", "id")
+album1 = Album("London Calling", artist1, "punk")
 album_repository.save(album1)
 
 # res = artist_repository.select_all()
 
 # print(res)
+
+# res = album_repository.select_all()
+
+# print(res)
+
+
 
 pdb.set_trace()

@@ -30,7 +30,7 @@ def select(id):
 
 def select_all():
     artists = []
-    sql - "SELECT * FROM artists"
+    sql = "SELECT * FROM artists"
     results = run_sql(sql)
     for row in results:
         artist = Artist(row["name"], row['id'])
@@ -42,12 +42,25 @@ def select_all():
 
 
 def albums(artist):
-    pass
+    albums = []
+
+    sql = "SELECT * FROM albums WHERE user_id = %s"
+    values = [user.id]
+    results = run-sql(sql, values)
+
+    for row in results:
+        album = Album(row['description'], artist, row['genre'], row['id'])
+        albums.append(album)
+    return album
 
 
 def delete(id):
-    pass
+    sql = "DELETE FROM artistsWHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 
 def update(artist):
-    pass
+    sql = "UPDATE artists SET (name) = (%s) WHERE id = %s"
+    values = [artist.name, artist.id]
+    run_sql(sql, values)
